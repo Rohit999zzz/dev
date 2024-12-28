@@ -1,0 +1,36 @@
+
+export ZONE=
+
+curl -LO raw.githubusercontent.com/Techcps/GSP-Short-Trick/master/Implement%20DevOps%20Workflows%20in%20Google%20Cloud%3A%20Challenge%20Lab/techcps330.sh
+sudo chmod +x techcps330.sh
+./techcps330.sh
+
+
+
+
+
+kubectl -n $CPSPACE rollout undo deployment/$DEPLOYMENT
+
+# Sleep for 60 seconds
+sleep 60
+kubectl -n $CPSPACE rollout undo deployment/$DEPLOYMENT
+
+
+cd sample-app
+kubectl -n prod rollout undo deployment/production-deployment
+
+
+
+
+
+curl -sS https://webi.sh/gh | sh
+gh auth login
+gh api user -q ".login"
+GITHUB_USERNAME=$(gh api user -q ".login")
+git config --global user.name "${GITHUB_USERNAME}"
+git config --global user.email "${USER_EMAIL}"
+echo ${GITHUB_USERNAME}
+
+
+history -c
+> ~/.bash_history
