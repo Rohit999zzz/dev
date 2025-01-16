@@ -1,0 +1,3 @@
+curl -LO raw.githubusercontent.com/quiccklabs/Labs_solutions/master/CICD%20on%20Google%20Cloud%20Challenge%20Lab/quicklabgsp393.sh
+  sudo chmod +x quicklabgsp393.sh
+  ./quicklabgsp393.sh
