@@ -1,0 +1,35 @@
+export REGION=
+curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/Cloud%20Storage%20Qwik%20Start%20-%20CLI%20SDK/gsp074.sh
+
+sudo chmod +x gsp074.sh
+
+./gsp074.sh
+
+Task 1. Create a bucket
+gcloud storage buckets create gs://<YOUR-BUCKET-NAME>
+
+task 2. Upload an object into your bucket
+curl https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Ada_Lovelace_portrait.jpg/800px-Ada_Lovelace_portrait.jpg --output ada.jpg
+gcloud storage cp ada.jpg gs://YOUR-BUCKET-NAME
+rm ada.jpg
+
+Task 3. Download an object from your bucket
+gcloud storage cp -r gs://YOUR-BUCKET-NAME/ada.jpg .
+
+Task 4. Copy an object to a folder in the bucket
+gcloud storage cp gs://YOUR-BUCKET-NAME/ada.jpg gs://YOUR-BUCKET-NAME/image-folder/
+
+ask 5. List contents of a bucket or folde
+gcloud storage ls gs://YOUR-BUCKET-NAME
+
+ask 6. List details for an object
+gcloud storage ls -l gs://YOUR-BUCKET-NAME/ada.jpg
+
+Task 7. Make your object publicly accessible
+gsutil acl ch -u AllUsers:R gs://YOUR-BUCKET-NAME/ada.jpg
+
+Task 8. Remove public access
+gsutil acl ch -d AllUsers gs://YOUR-BUCKET-NAME/ada.jpg
+
+
+gcloud storage rm gs://YOUR-BUCKET-NAME/ada.jpg
