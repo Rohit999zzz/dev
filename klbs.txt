@@ -1,0 +1,13 @@
+Task 1. Clone the sample code
+
+gsutil -m cp -r gs://spls/gsp233/* .
+cd tf-gke-k8s-service-lb
+
+ask 2. Understand the code
+Review the contents of the main.tf file:
+cat main.tf
+cat k8s.tf
+
+ask 3. Initialize and install dependencie
+terraform init
+terraform apply -var="region="Region to be allocated"" -var="location="Zone to be allocated""
