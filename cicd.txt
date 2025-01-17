@@ -1,3 +1,10 @@
 curl -LO raw.githubusercontent.com/quiccklabs/Labs_solutions/master/CICD%20on%20Google%20Cloud%20Challenge%20Lab/quicklabgsp393.sh
   sudo chmod +x quicklabgsp393.sh
   ./quicklabgsp393.sh
+
+export ZONE=
+curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/Implement%20CI%20CD%20Pipelines%20on%20Google%20Cloud%20Challenge%20Lab/gsp393.sh
+
+sudo chmod +x gsp393.sh
+
+./gsp393.sh
