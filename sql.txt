@@ -1,0 +1,43 @@
+export ZONE=
+curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/Cloud%20SQL%20for%20MySQL%20Qwik%20Start/gsp151.sh
+
+sudo chmod +x gsp151.sh
+
+./gsp151.sh
+
+Task 1. Create a Cloud SQL instance
+From the Navigation menu (Navigation menu icon) click on SQL.
+
+Click Create Instance.
+
+Choose MySQL database engine.
+
+Enter Instance ID as myinstance.
+
+In the password field click on the Generate link and the eye icon to see the password. Save the password to use in the next section.
+
+Select the database version as MySQL 8.
+
+For Choose a Cloud SQL edition, select Enterprise edition.
+
+For Preset choose Development (4 vCPU, 16 GB RAM, 100 GB Storage, Single zone).
+
+Warning: if you choose a preset larger than Development, your project will be flagged and your lab will be terminated.
+Set Region as <REGION>.
+
+Set the Multi zones (Highly available) > Primary Zone field as <ZONE>.
+
+Click CREATE INSTANCE.
+
+Task 2. Connect to your instance using the mysql client in Cloud Shell
+gcloud sql connect myinstance --user=root
+
+Task 3. Create a database and upload data
+CREATE DATABASE guestbook;
+USE guestbook;
+CREATE TABLE entries (guestName VARCHAR(255), content VARCHAR(255),
+    entryID INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(entryID));
+    INSERT INTO entries (guestName, content) values ("first guest", "I got here!");
+INSERT INTO entries (guestName, content) values ("second guest", "Me too!");
+
+SELECT * FROM entries;
