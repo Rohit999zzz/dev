@@ -1,0 +1,53 @@
+export ZONE_2=
+curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/VPC%20Networking%20Fundamentals/gsp210.sh
+
+sudo chmod +x gsp210.sh
+
+./gsp210.sh
+
+Task 1. Explore the default network
+Delete the default network
+Task 2. Create a VPC network and VM instances
+In the console, navigate to Navigation menu (Navigation menu icon) > VPC network > VPC networks, and then click +CREATE VPC NETWORK.
+
+Set the Name to mynetwork.
+
+For Subnet creation mode, click Automatic.
+
+Auto mode networks create subnets in each region automatically.
+
+For Firewall rules, check all available rules.
+
+These are the same standard firewall rules that the default network had.
+
+Note: The deny-all-ingress and allow-all-egress rules are also displayed, but you cannot check or uncheck them as they are implied. These two rules have a lower Priority (higher integers indicate lower priorities) so that the allow ICMP, custom, RDP and SSH rules are considered first.
+Click CREATE, then wait for mynetwork to be created.
+
+Notice that a subnet was created for each region.
+
+Click on the mynetwork name and record the IP address range for the subnets in REGION and REGION. Refer to these in the next steps.
+
+
+In the console, navigate to Navigation menu (Navigation menu icon) > Compute Engine > VM instances,
+
+Click Create Instance.
+
+In the Machine configuration:
+
+Set the following values:
+
+Property	Value (type value or select option as specified)
+Name	mynet-us-vm
+Region	REGION
+Zone	ZONE
+Series	E2
+Machine Type	e2-micro
+
+Property	Value (type value or select option as specified)
+Name	mynet-us-vm
+Region	REGION
+Zone	ZONE
+Series	E2
+Machine Type	e2-micro
+
+
