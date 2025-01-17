@@ -34,7 +34,19 @@ curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/I
 sudo chmod +x gsp330-2.sh
 
 ./gsp330-2.sh
-```
+
+kubectl -n $CPSPACE rollout undo deployment/$DEPLOYMENT
+
+# Sleep for 60 seconds
+sleep 60
+kubectl -n $CPSPACE rollout undo deployment/$DEPLOYMENT
+
+
+cd sample-app
+kubectl -n prod rollout undo deployment/production-deployment
+
+
+
 echo "${BOLD}${GREEN}Rollback and Validate Deployment${RESET}"
 kubectl -n prod rollout undo deployment/production-deployment
 
