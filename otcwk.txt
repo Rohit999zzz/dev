@@ -1,0 +1,56 @@
+export ZONE=
+curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/Orchestrating%20the%20Cloud%20with%20Kubernetes/gsp021.sh
+
+sudo chmod +x gsp021.sh
+
+./gsp021.sh
+gcloud config set compute/zone Zone
+gcloud container clusters create io --zone Zone
+Task 1. Get the sample code
+gsutil cp -r gs://spls/gsp021/* .
+cd orchestrate-with-kubernetes/kubernetes
+
+Task 2. Quick Kubernetes Demo
+kubectl create deployment nginx --image=nginx:1.10.0
+kubectl get pods
+kubectl expose deployment nginx --port 80 --type LoadBalancer
+
+Task 4. Creating pods
+cd ~/orchestrate-with-kubernetes/kubernetes
+cat pods/monolith.yaml
+kubectl create -f pods/monolith.yaml
+kubectl describe pods monolith
+
+Task 5. Interacting with pods
+n the 2nd terminal,
+kubectl port-forward monolith 10080:80
+1st terminal start
+curl -u user http://127.0.0.1:10080/login
+TOKEN=$(curl http://127.0.0.1:10080/login -u user|jq -r '.token')
+curl -H "Authorization: Bearer $TOKEN" http://127.0.0.1:10080/secure
+
+Task 7. Creating a service
+cd ~/orchestrate-with-kubernetes/kubernetes
+cat pods/secure-monolith.yaml
+kubectl create secret generic tls-certs --from-file tls/
+kubectl create configmap nginx-proxy-conf --from-file nginx/proxy.conf
+kubectl create -f pods/secure-monolith.yaml
+cat services/monolith.yaml
+kubectl create -f services/monolith.yaml
+gcloud compute firewall-rules create allow-monolith-nodeport \
+  --allow=tcp:31000
+
+ask 8. Adding labels to pods
+kubectl label pods secure-monolith 'secure=enabled'
+kubectl get pods secure-monolith --show-labels
+kubectl describe services monolith | grep Endpoints
+
+Task 10. Creating deployments
+kubectl create -f deployments/auth.yaml
+kubectl create -f services/auth.yaml
+kubectl create -f deployments/hello.yaml
+kubectl create -f services/hello.yaml
+kubectl create configmap nginx-frontend-conf --from-file=nginx/frontend.conf
+kubectl create -f deployments/frontend.yaml
+kubectl create -f services/frontend.yaml
+
