@@ -1,0 +1,29 @@
+curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/Creating%20a%20Virtual%20Machine/gsp001.sh
+
+sudo chmod +x gsp001.sh
+
+./gsp001.sh
+
+task 1. Create a new instance from the Cloud console
+
+Name	gcelab	
+Region	<REGION>	
+Zone	<ZONE>
+Series	E2	
+Machine Type	e2-medium	
+Click OS and storage.
+
+
+
+Operating system: Debian
+Version: Debian GNU/Linux 11 (bullseye)
+Boot disk type: Balanced persistent disk
+Size: 10 GB
+Firewall: Allow HTTP traffic
+
+sudo apt-get update
+sudo apt-get install -y nginx
+ps auwx | grep nginx
+gcloud compute instances create gcelab2 --machine-type e2-medium --zone=$ZONE
+  ssh
+  gcloud compute ssh gcelab2 --zone=Zone
