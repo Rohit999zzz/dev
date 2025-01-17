@@ -8,3 +8,6 @@ curl -LO raw.githubusercontent.com/QUICK-GCP-LAB/2-Minutes-Labs-Solutions/main/D
 sudo chmod +x gsp318.sh
 
 ./gsp318.sh
+
+https://github.com/techgalary/qwiklabs/blob/main/gcp-challenge-labs/Deploy%20Kubernetes%20Applications%20on%20Google%20Cloud%20Challenge%20Lab.md
+wget https://raw.githubusercontent.com/techgalary/qwiklabs/main/gcp-challenge-labs/Deploy%20Kubernetes%20Applications%20on%20Google%20Cloud%20Challenge%20Lab.md
